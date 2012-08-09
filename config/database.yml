@@ -26,7 +26,8 @@
 common: &common
   adapter: postgresql
   username: postgres
-  password: abcde12345!@#$% # from psql setup, see Postgresql
+  # password: abcde12345!@#$% # from psql setup, see Postgresql
+  password: abcde01234)!@#$ # from psql setup, see Postgresql
 
 development:
   <<: *common
