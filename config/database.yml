@@ -33,7 +33,7 @@ development:
   <<: *common
   database: sample_app_dev
 
-test:
+test: &test
   <<: *common
   database: sample_app_test
 
@@ -41,3 +41,6 @@ production:
   <<: *common
   database: sample_app_prod
 
+
+cucumber:
+  <<: *test
