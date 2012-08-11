@@ -3,6 +3,9 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.1'
 gem 'bootstrap-sass', '2.0.0'
 gem 'bcrypt-ruby', '3.0.1'
+gem 'faker', '1.0.1'
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -35,6 +38,8 @@ group :test do
   gem 'win32console', '1.3.0'
   gem 'guard-spork', '0.3.2'
   gem 'spork', '0.9.0'
+  gem 'cucumber-rails', '1.2.1', require: false
+  gem 'database_cleaner', '0.7.0'
 end
 
 #group :production do
