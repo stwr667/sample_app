@@ -1,7 +1,15 @@
+<% content_for(:head) do %>
+<%= javascript_include_tag "my_utils.js" %>
+<% end %>
+
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  <div style="display:inline-block;">
+    You have <div id="char_count" style="display:inline-block;">140</div> characters left to type.
+  </div>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+    <%= f.text_area :content, placeholder: "Compose new micropost...",
+        onkeyup: "updateCharsLeft(this);", maxlength: "140" %>
   </div>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

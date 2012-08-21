@@ -31,6 +31,30 @@ describe "Static pages" do
           page.should have_selector("li##{item.id}", text: item.content)
         end
       end
+
+      describe "correct number of microposts" do
+        let(:micro_count) { user.microposts.count }
+
+        it { should have_content("#{pluralize(micro_count, 'micropost')}") }
+      end
+
+      describe "pagination" do
+        it "should show each feed item" do
+          user.feed.paginate(page: 1).each do |micropost|
+            page.should have_selector("li##{micropost.id}", text: micropost.content)
+          end
+        end
+      end
+
+      describe "displaying delete links for the correct user" do
+        let(:other_user) { FactoryGirl.create(:user) }
+        let(:other_post) { FactoryGirl.create(:micropost, user: other_user, content: "Shouldnt see this") }
+        
+        it "shouldn't display the delete button for this post" do
+          page.should_not have_link("delete", href: micropost_path(other_post))
+        end
+      end
+
     end
   end
 

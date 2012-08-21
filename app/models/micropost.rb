@@ -8,10 +8,13 @@
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
+include MicropostsHelper
 
 class Micropost < ActiveRecord::Base
   attr_accessible :content
   belongs_to :user
+
+  before_save { |micropost| micropost.content = wrap(content) }
 
   validates :content, presence: true, length: { maximum: 140 }
   validates :user_id, presence: true
